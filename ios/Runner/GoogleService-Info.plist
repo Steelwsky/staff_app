@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>840725372435-4ussgkbi11vv0mgnkk751r2k51eu79it.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.840725372435-4ussgkbi11vv0mgnkk751r2k51eu79it</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBwqT9eeTwIyijD0Ai5jUCnFmln4bAbbsQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>840725372435</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vadimzadorskii.staffapp</string>
+	<key>PROJECT_ID</key>
+	<string>staff-app-7e69b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>staff-app-7e69b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:840725372435:ios:c9e9be8a726a8633c9e9e6</string>
+	<key>DATABASE_URL</key>
+	<string>https://staff-app-7e69b.firebaseio.com</string>
+</dict>
+</plist>

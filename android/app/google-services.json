@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "840725372435",
+    "firebase_url": "https://staff-app-7e69b.firebaseio.com",
+    "project_id": "staff-app-7e69b",
+    "storage_bucket": "staff-app-7e69b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840725372435:android:20ccb70682333d75c9e9e6",
+        "android_client_info": {
+          "package_name": "com.vadimzadorskii.staffapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840725372435-th5ed5ncjum2fp6mvkdl3l7ak1la7s43.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZjDbPUVVj1siPNFwIlX8ijY_UA5BqpGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840725372435-th5ed5ncjum2fp6mvkdl3l7ak1la7s43.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
