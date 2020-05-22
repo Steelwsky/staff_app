@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:staffapp/models/staff_model.dart';
+import 'package:staffapp/widgets/staff_list.dart';
 
 import 'pages/creation_staff_member_page.dart';
 import 'pages/selected_staff_page.dart';
@@ -16,31 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Список сотрудников'),
       ),
-      body: Center(
-          child: ListView(
-              key: PageStorageKey('staffPage'),
-              children: staffList
-                  .toList()
-                  .map(
-                    (i) => ListTile(
-                      title: Text(
-                        '${i.lastName} ${i.firstName} ${i.middleName}',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      subtitle: Text(
-                        '${i.position} \n${i.birthDay}',
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      trailing: Icon(Icons.bookmark),
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (_) => SelectedStaffMemberPage(staffMemberModel: i)));
-                      },
-                    ),
-                  )
-                  .toList())),
+      body: StaffList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (_) => CreationStaffMemberPage()));

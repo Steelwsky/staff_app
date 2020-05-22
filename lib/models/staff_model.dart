@@ -19,8 +19,6 @@ final Iterable<StaffMemberModel> staffList = [
   )
 ];
 
-//enum Position { manager, engineer }
-
 const List<String> positionList = [
   "Инженер",
   "Менеджер"

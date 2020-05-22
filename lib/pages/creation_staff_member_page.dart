@@ -9,16 +9,6 @@ class CreationStaffMemberPage extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
-//  final snackbarDateFailed = SnackBar(
-//    content: Text("Укажите дату рождения"),
-//    duration: Duration(seconds: 2),
-//  );
-//
-//  final snackbarSuccess = SnackBar(
-//    content: Text("Сотрудник добавлен"),
-//    duration: Duration(seconds: 2),
-//  );
-
   @override
   Widget build(BuildContext context) {
     final staffCreation = Provider.of<ManCreation>(context);
