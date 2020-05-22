@@ -17,7 +17,7 @@ class _MyDropdownPositionState extends State<MyDropdownPosition> {
 
   @override
   Widget build(BuildContext context) {
-    final staffCreation = Provider.of<ManCreation>(context);
+    final staffCreation = Provider.of<PersonCreation>(context);
     return FormField<String>(
       builder: (FormFieldState<String> state) {
         return DropdownButtonHideUnderline(

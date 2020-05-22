@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:staffapp/models/staff_model.dart';
+import 'package:provider/provider.dart';
+import 'package:staffapp/controller/staff_controller.dart';
 import 'package:staffapp/widgets/staff_list.dart';
 
 import 'pages/creation_staff_member_page.dart';
-import 'pages/selected_staff_page.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -13,9 +13,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final personCreation = Provider.of<PersonCreation>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Список сотрудников'),
+        actions: <Widget>[
+          IconButton(
+            key: ValueKey('deleteIcon'),
+            icon: Icon(Icons.delete),
+            onPressed: personCreation.deleteAllEntries,
+          ),
+        ],
       ),
       body: StaffList(),
       floatingActionButton: FloatingActionButton(

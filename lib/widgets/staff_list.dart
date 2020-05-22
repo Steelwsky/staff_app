@@ -9,7 +9,7 @@ class StaffList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final manController = Provider.of<ManCreation>(context);
+    final manController = Provider.of<PersonCreation>(context);
     return StreamBuilder(
       key: ValueKey('historyPage'),
       stream: manController.getAllStaff(),

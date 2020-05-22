@@ -4,13 +4,16 @@ import 'package:intl/intl.dart';
 import 'package:staffapp/main.dart';
 import 'package:staffapp/models/staff_model.dart';
 import 'package:uuid/uuid.dart';
+import 'package:staffapp/utils/snackbars.dart';
 
-class ManCreation {
+class PersonCreation {
   final DatabaseConcept database;
 
-  ManCreation({this.database});
+  PersonCreation({this.database});
 
   ValueNotifier<StaffMemberModel> staffMemberNotifier = ValueNotifier(StaffMemberModel(position: positionList.first));
+
+  MySnackbars mySnackbars = MySnackbars();
 
   void addInfo(DataType dataType, String data) {
     switch (dataType) {
@@ -89,10 +92,10 @@ class ManCreation {
       database.addStaffMember(staffMemberNotifier.value);
       staffMemberNotifier.value = StaffMemberModel(position: positionList.first);
       print('saved');
-      key.currentState.showSnackBar(snackbarSuccess);
+      mySnackbars.showSuccessSnackbar(key);
     } else {
       print('already exists');
-      key.currentState.showSnackBar(snackbarExists);
+      mySnackbars.showStaffExistsSnackbar(key);
     }
   }
 
@@ -108,6 +111,10 @@ class ManCreation {
   Stream<List<StaffMemberModel>> getAllStaff() {
     print('getAll called');
     return database.getAllStaff();
+  }
+
+  Future<void> deleteAllEntries() async {
+    return await database.deleteAllEntries();
   }
 }
 
@@ -125,18 +132,3 @@ enum DataType {
   middleName,
   position,
 }
-
-final snackbarDateFailed = SnackBar(
-  content: Text("Укажите дату рождения"),
-  duration: Duration(seconds: 2),
-);
-
-final snackbarSuccess = SnackBar(
-  content: Text("Сотрудник добавлен"),
-  duration: Duration(seconds: 2),
-);
-
-final snackbarExists = SnackBar(
-  content: Text("Сотрудник уже существует"),
-  duration: Duration(seconds: 2),
-);

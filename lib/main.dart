@@ -10,13 +10,15 @@ import 'home_page.dart';
 typedef AddStaffMember = Future<void> Function(StaffMemberModel staffMemberModel);
 typedef GetAllStaff = Stream<List<StaffMemberModel>> Function();
 typedef IsStaffExists = Future<bool> Function(String string);
+typedef DeleteAllEntries = Future<void> Function();
 
 abstract class DatabaseConcept {
   final AddStaffMember addStaffMember;
   final GetAllStaff getAllStaff;
   final IsStaffExists isStaffExists;
+  final DeleteAllEntries deleteAllEntries;
 
-  DatabaseConcept({this.addStaffMember, this.getAllStaff, this.isStaffExists});
+  DatabaseConcept({this.addStaffMember, this.getAllStaff, this.isStaffExists, this.deleteAllEntries});
 }
 
 class ProductionDatabase implements DatabaseConcept {
@@ -30,6 +32,9 @@ class ProductionDatabase implements DatabaseConcept {
 
   @override
   IsStaffExists get isStaffExists => firestoreDatabase.isStaffExists;
+
+  @override
+  DeleteAllEntries get deleteAllEntries => firestoreDatabase.deleteAllEntries;
 }
 
 void main() {
@@ -53,7 +58,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          Provider<ManCreation>(create: (_) => ManCreation(database: widget.database)),
+          Provider<PersonCreation>(create: (_) => PersonCreation(database: widget.database)),
         ],
         child: MaterialApp(
           title: 'Staff App',

@@ -41,14 +41,18 @@ class FirestoreDatabase {
 
   Future<bool> isStaffExists(String uuid) async{
     Future<bool> isExists;
-//    databaseFirestore.collection('savedStaff').where('id', isEqualTo: uuid).snapshots().listen((event) {
-//      event.documents.length == 0 ? isExists = Future.value(false) : isExists = Future.value(true);
-//    });
     await databaseFirestore.collection('savedStaff').where('id', isEqualTo: uuid).getDocuments().then((event) {
       event.documents.length == 0 ? isExists = Future.value(false) : isExists = Future.value(true);
     });
     return isExists;
   }
 
+  Future<void> deleteAllEntries() async {
+    await databaseFirestore.collection('savedStaff').getDocuments().then((snapshot) {
+      for (DocumentSnapshot doc in snapshot.documents) {
+        doc.reference.delete();
+      }
+    });
+  }
 
 }

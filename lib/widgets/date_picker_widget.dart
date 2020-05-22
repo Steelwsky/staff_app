@@ -14,7 +14,7 @@ class _MyDatePickerWidgetState extends State<MyDatePickerWidget> {
   @override
   Widget build(BuildContext context) {
     final datePickerController = Provider.of<DatePickerController>(context);
-    final staffCreation = Provider.of<ManCreation>(context);
+    final staffCreation = Provider.of<PersonCreation>(context);
     return Padding(
       padding: EdgeInsets.only(top: 16),
       child: Row(

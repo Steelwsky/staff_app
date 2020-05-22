@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:staffapp/controller/staff_controller.dart';
+import 'package:staffapp/utils/snackbars.dart';
 import 'package:staffapp/widgets/date_picker_widget.dart';
 import 'package:staffapp/widgets/position_dropdown.dart';
 import 'package:staffapp/widgets/text_field_widget.dart';
@@ -11,7 +12,8 @@ class CreationStaffMemberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final staffCreation = Provider.of<ManCreation>(context);
+    final staffCreation = Provider.of<PersonCreation>(context);
+    final MySnackbars mySnackbars = MySnackbars();
     staffCreation.clearStaffInfo();
     return MultiProvider(
       providers: [
@@ -61,7 +63,7 @@ class CreationStaffMemberPage extends StatelessWidget {
                             onPressed: () {
                               if (staffCreation.staffMemberNotifier.value.birthDay == null) {
                                 print('birthday null');
-                                _scaffoldKey.currentState.showSnackBar(snackbarDateFailed);
+                                mySnackbars.showDateFailedSnackbar(_scaffoldKey);
                               }
                               if (_formKey.currentState.validate() &&
                                   staffCreation.staffMemberNotifier.value.birthDay != null) {
