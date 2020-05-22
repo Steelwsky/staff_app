@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:staffapp/models/staff_model.dart';
 import 'package:staffapp/pages/creation_child_page.dart';
 
-import 'creation_staff_member_page.dart';
 
 class SelectedStaffMemberPage extends StatelessWidget {
   SelectedStaffMemberPage({Key key, this.staffMemberModel}) : super(key: key);

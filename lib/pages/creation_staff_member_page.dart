@@ -1,45 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:staffapp/controller/staff_controller.dart';
+import 'package:staffapp/widgets/date_picker_widget.dart';
+import 'package:staffapp/widgets/position_dropdown.dart';
+import 'package:staffapp/widgets/text_field_widget.dart';
 
 class CreationStaffMemberPage extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
+
+//  final snackbarDateFailed = SnackBar(
+//    content: Text("Укажите дату рождения"),
+//    duration: Duration(seconds: 2),
+//  );
+//
+//  final snackbarSuccess = SnackBar(
+//    content: Text("Сотрудник добавлен"),
+//    duration: Duration(seconds: 2),
+//  );
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Создание нового сотрудника'),
-      ),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'hi',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    Container(
-                      height: 50,
-                      width: 174,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 16.0),
-                          child: InkWell(
-                            onTap: () {},
-                            child: Row(
-                              children: <Widget>[],
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+    final staffCreation = Provider.of<ManCreation>(context);
+    staffCreation.clearStaffInfo();
+    return MultiProvider(
+      providers: [
+        Provider<DatePickerController>(create: (_) => DatePickerController()),
+      ],
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: Text('Создание сотрудника'),
+        ),
+        body: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                MyTextFieldWidget(
+                  name: 'Фамилия',
+                  dataType: DataType.lastName,
+                  //todo add personType
                 ),
-              ),
-            ]),
-          )
-        ],
+                MyTextFieldWidget(
+                  name: 'Имя',
+                  dataType: DataType.firstName,
+                ),
+                MyTextFieldWidget(
+                  name: 'Отчество',
+                  dataType: DataType.middleName,
+                ),
+                MyDatePickerWidget(),
+                MyDropdownPosition(
+                  dataType: DataType.position,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 24.0),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        RaisedButton(
+                            child: Text(
+                              'Сохранить',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: Colors.deepPurple,
+                            onPressed: () {
+                              if (staffCreation.staffMemberNotifier.value.birthDay == null) {
+                                print('birthday null');
+                                _scaffoldKey.currentState.showSnackBar(snackbarDateFailed);
+                              }
+                              if (_formKey.currentState.validate() &&
+                                  staffCreation.staffMemberNotifier.value.birthDay != null) {
+                                print('all good');
+                                staffCreation.saveNewStaffMember(_scaffoldKey);
+                                Future.delayed(Duration(seconds: 2), () {
+                                  Navigator.pop(context);
+                                });
+                              }
+                            }),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -18,8 +18,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
           child: ListView(
-              key: PageStorageKey('latest'),
-              children: list
+              key: PageStorageKey('staffPage'),
+              children: staffList
                   .toList()
                   .map(
                     (i) => ListTile(
@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(fontSize: 18),
                       ),
                       subtitle: Text(
-                        i.position,
+                        '${i.position} \n${i.birthDay}',
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 16),
