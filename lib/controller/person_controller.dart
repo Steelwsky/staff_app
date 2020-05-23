@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:staffapp/main.dart';
 import 'package:staffapp/models/child_model.dart';
 import 'package:staffapp/models/staff_model.dart';
+import 'package:staffapp/storage/concept_database.dart';
 import 'package:staffapp/utils/snackbars.dart';
 import 'package:uuid/uuid.dart';
 
@@ -21,8 +21,6 @@ class PersonController {
   ValueNotifier<Map<String, int>> staffAndChildrenNotifier = ValueNotifier({});
 
   MySnackbars mySnackbars = MySnackbars();
-
-//  void getAmountForAll() {}
 
   void addInfo({DataType dataType, String data, PersonType personType}) {
     switch (dataType) {

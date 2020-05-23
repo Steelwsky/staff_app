@@ -28,7 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: StaffList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => new CreationPersonPage(personType: PersonType.staff)));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => CreationPersonPage(personType: PersonType.staff)));
         },
         tooltip: 'Создание нового сотрудника',
         child: Icon(Icons.add),
