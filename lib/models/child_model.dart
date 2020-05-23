@@ -4,7 +4,7 @@ class ChildModel {
   final String lastName;
   final String firstName;
   final String middleName;
-  final DateTime birthday;
+  final String birthDay;
 
-  ChildModel({this.id, this.parentId, this.lastName, this.firstName, this.middleName, this.birthday});
+  ChildModel({this.id, this.parentId, this.lastName, this.firstName, this.middleName, this.birthDay});
 }

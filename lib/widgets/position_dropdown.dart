@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:staffapp/controller/staff_controller.dart';
+import 'package:staffapp/controller/person_controller.dart';
 import 'package:staffapp/models/staff_model.dart';
 
 class MyDropdownPosition extends StatefulWidget {
@@ -17,7 +17,7 @@ class _MyDropdownPositionState extends State<MyDropdownPosition> {
 
   @override
   Widget build(BuildContext context) {
-    final staffCreation = Provider.of<PersonCreation>(context);
+    final staffCreation = Provider.of<PersonController>(context);
     return FormField<String>(
       builder: (FormFieldState<String> state) {
         return DropdownButtonHideUnderline(
@@ -35,7 +35,7 @@ class _MyDropdownPositionState extends State<MyDropdownPosition> {
                   value: _currentSelectedValue,
                   isDense: true,
                   onChanged: (String newValue) {
-                    staffCreation.addInfo(widget.dataType, newValue);
+                    staffCreation.addInfo(dataType: widget.dataType, data: newValue);
                     setState(() {
                       _currentSelectedValue = newValue;
                     });

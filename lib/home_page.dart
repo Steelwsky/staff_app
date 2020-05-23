@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:staffapp/controller/staff_controller.dart';
+import 'package:staffapp/controller/person_controller.dart';
 import 'package:staffapp/widgets/staff_list.dart';
 
-import 'pages/creation_staff_member_page.dart';
+import 'pages/creation_person_page.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final personCreation = Provider.of<PersonCreation>(context);
+    final personCreation = Provider.of<PersonController>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Список сотрудников'),
@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: StaffList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => CreationStaffMemberPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => new CreationPersonPage(personType: PersonType.staff)));
         },
         tooltip: 'Создание нового сотрудника',
         child: Icon(Icons.add),

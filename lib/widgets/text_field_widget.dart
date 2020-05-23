@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:staffapp/controller/staff_controller.dart';
+import 'package:staffapp/controller/person_controller.dart';
 
 class MyTextFieldWidget extends StatelessWidget {
   final String name;
   final DataType dataType;
 
-//  final MemberType memberType;
+  final PersonType personType;
 
   MyTextFieldWidget({
     @required this.name,
     this.dataType,
-//    this.memberType,
+    this.personType,
   });
 
   @override
   Widget build(BuildContext context) {
-    final staffCreation = Provider.of<PersonCreation>(context);
+    final staffCreation = Provider.of<PersonController>(context);
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: TextFormField(
@@ -24,7 +24,7 @@ class MyTextFieldWidget extends StatelessWidget {
           hintText: name,
         ),
         onChanged: (string) {
-          staffCreation.addInfo(dataType, string);
+          staffCreation.addInfo(dataType: dataType, data: string, personType: personType);
         },
         validator: (value) {
           if (value.isEmpty) {
