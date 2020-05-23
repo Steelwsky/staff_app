@@ -30,7 +30,7 @@ class _MyDropdownPositionState extends State<MyDropdownPosition> {
                 hintText: 'Выберите должность',
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.only(top: 12.0),
                 child: DropdownButton<String>(
                   value: _currentSelectedValue,
                   isDense: true,

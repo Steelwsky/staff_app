@@ -18,8 +18,9 @@ class MyTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final staffCreation = Provider.of<PersonController>(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
       child: TextFormField(
+        maxLength: 14,
         decoration: InputDecoration(
           hintText: name,
         ),

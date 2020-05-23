@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:staffapp/models/child_model.dart';
 import 'package:staffapp/models/staff_model.dart';
@@ -75,7 +76,7 @@ class FirestoreDatabase {
     var listOfParentsAndChildren = await retrieveParentsIds();
     int amount;
     Map<String, int> myMap = {};
-    for(var n in listOfParentsAndChildren) {
+    for (var n in listOfParentsAndChildren) {
       await databaseFirestore.collection('children').where('parentId', isEqualTo: n).getDocuments().then((event) {
         amount = event.documents.length;
         print(event.documents.length);
@@ -86,7 +87,7 @@ class FirestoreDatabase {
   }
 
   Future<bool> isStaffExists(String uuid) async {
-    print ('isStaffExists $uuid');
+    print('isStaffExists $uuid');
     Future<bool> isExists;
     await databaseFirestore.collection('savedStaff').where('id', isEqualTo: uuid).getDocuments().then((event) {
       event.documents.length == 0 ? isExists = Future.value(false) : isExists = Future.value(true);

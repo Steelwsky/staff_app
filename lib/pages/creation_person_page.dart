@@ -62,7 +62,7 @@ class CreationPersonPage extends StatelessWidget {
                       )
                     : SizedBox.shrink(),
                 Padding(
-                  padding: EdgeInsets.only(top: 14.0),
+                  padding: EdgeInsets.only(top: 20.0),
                   child: Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,

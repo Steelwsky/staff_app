@@ -4,13 +4,13 @@ import 'package:intl/intl.dart';
 import 'package:staffapp/main.dart';
 import 'package:staffapp/models/child_model.dart';
 import 'package:staffapp/models/staff_model.dart';
-import 'package:uuid/uuid.dart';
 import 'package:staffapp/utils/snackbars.dart';
+import 'package:uuid/uuid.dart';
 
 class PersonController {
   final DatabaseConcept database;
 
-  PersonController({this.database}){
+  PersonController({this.database}) {
     getAmountOfChildrenForEachStaff();
   }
 
@@ -19,7 +19,6 @@ class PersonController {
   ValueNotifier<ChildModel> childNotifier = ValueNotifier(ChildModel());
 
   ValueNotifier<Map<String, int>> staffAndChildrenNotifier = ValueNotifier({});
-  
 
   MySnackbars mySnackbars = MySnackbars();
 
@@ -134,9 +133,9 @@ class PersonController {
         );
         if (await isStaffMemberInDatabase(string: staffMemberNotifier.value.id) == false) {
           database.addStaffMember(staffMemberNotifier.value);
-          getAmountOfChildrenForEachStaff();
+          staffAndChildrenNotifier.value[staffMemberNotifier.value.id] = 0;
           staffMemberNotifier.value = StaffMemberModel(position: positionList.first);
-          
+
           print('saved');
           mySnackbars.showStaffSuccessSnackbar(key);
         } else {
@@ -147,7 +146,7 @@ class PersonController {
       case PersonType.child:
         childNotifier.value = ChildModel(
           id: _getUuidFromString(
-              '${childNotifier.value.lastName}${childNotifier.value.firstName}${staffMemberNotifier.value.birthDay}'),
+              '${childNotifier.value.lastName}${childNotifier.value.firstName}${childNotifier.value.birthDay}'),
           parentId: parentId,
           lastName: childNotifier.value.lastName,
           firstName: childNotifier.value.firstName,
@@ -189,12 +188,11 @@ class PersonController {
     staffAndChildrenNotifier.value = await database.amountOfChildrenForEachStaff();
     print(staffAndChildrenNotifier.value.keys);
   }
-  
 
   Future<void> deleteAllEntries() async {
     await database.deleteAllEntries();
   }
-  
+
   void clearStaffInfo() {
     staffMemberNotifier.value = StaffMemberModel(position: positionList.first);
     childNotifier.value = ChildModel();

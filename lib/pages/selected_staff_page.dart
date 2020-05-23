@@ -15,29 +15,34 @@ class SelectedStaffMemberPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('${staffMemberModel.lastName} ${staffMemberModel.firstName}'),
       ),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: <Widget>[
-                    Container(
+      body: Column(children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Container(
                       child: Text(
-                        '${staffMemberModel.position} ${staffMemberModel.id}',
-                        style: TextStyle(fontSize: 16),
+                        'Фамилия: ${staffMemberModel.lastName}\n'
+                        'Имя: ${staffMemberModel.firstName}\n'
+                        'Отчество: ${staffMemberModel.middleName}\n'
+                        'Позиция: ${staffMemberModel.position}\n'
+                        'Дата рождения:  ${staffMemberModel.birthDay}',
+                        style: TextStyle(fontSize: 18),
                       ),
-                      height: 50,
+                      height: 120,
                     ),
-                    ChildrenList(parentId: staffMemberModel.id),
-                  ],
-                ),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.start,
               ),
-            ]),
-          )
-        ],
-      ),
+              ChildrenList(parentId: staffMemberModel.id),
+            ],
+          ),
+        ),
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
@@ -91,9 +96,19 @@ class ChildrenListBuilder extends StatelessWidget {
           child: ListTile(
             key: ValueKey('item$index'),
             dense: false,
-            title: Text(
-              '${child.lastName} ${child.firstName} ',
-              style: TextStyle(fontSize: 18),
+            title: Padding(
+              padding: EdgeInsets.only(top: 8, bottom: 8),
+              child: Text(
+                '${child.lastName} ${child.firstName}',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 8, bottom: 8),
+              child: Text(
+                'Дата рождения: ${child.birthDay}',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ),
         );
@@ -105,18 +120,32 @@ class ChildrenListBuilder extends StatelessWidget {
 class EmptyChildrenList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: 120,
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: Text(
-          'Детей нет',
-          key: ValueKey('emptyChildrenList'),
-          style: TextStyle(fontSize: 18),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Divider(
+                  height: 2,
+                  thickness: 1,
+                  color: Colors.grey,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Text(
+                  'Детей нет',
+                  key: ValueKey('emptyChildrenList'),
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -20,7 +20,7 @@ class _MyDatePickerWidgetState extends State<MyDatePickerWidget> {
     final datePickerController = Provider.of<DatePickerController>(context);
     final staffCreation = Provider.of<PersonController>(context);
     return Padding(
-      padding: EdgeInsets.only(top: 16),
+      padding: EdgeInsets.only(top: 4),
       child: Row(
         children: <Widget>[
           IconButton(
