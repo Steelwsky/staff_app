@@ -43,7 +43,10 @@ class _MyDropdownPositionState extends State<MyDropdownPosition> {
                   items: positionList.map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Text(
+                        value,
+                        style: TextStyle(fontSize: 18),
+                      ),
                     );
                   }).toList(),
                 ),

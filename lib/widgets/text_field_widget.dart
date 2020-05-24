@@ -21,6 +21,7 @@ class MyTextFieldWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
       child: TextFormField(
         maxLength: 14,
+        style: TextStyle(fontSize: 18),
         decoration: InputDecoration(
           hintText: name,
         ),

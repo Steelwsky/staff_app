@@ -35,7 +35,7 @@ class _MyDatePickerWidgetState extends State<MyDatePickerWidget> {
               }),
           Container(
               width: 294,
-              height: 46,
+              height: 60,
               child: Padding(
                 padding: EdgeInsets.only(top: 12.0),
                 child: Column(

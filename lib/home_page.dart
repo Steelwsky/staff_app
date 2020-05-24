@@ -27,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: StaffList(),
       floatingActionButton: FloatingActionButton(
+        key: ValueKey('fabCreateStaff'),
         onPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (_) => CreationPersonPage(personType: PersonType.staff)));

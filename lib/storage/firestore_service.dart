@@ -72,6 +72,13 @@ class FirestoreDatabase {
     return myParentsList.toList();
   }
 
+  //for app's side calculation
+//  Future<List<DocumentSnapshot>> retrieveAllChildren() async {
+//    List<DocumentSnapshot> myList = [];
+//    await databaseFirestore.collection('children').getDocuments().then((value) => myList = value.documents);
+//    return myList;
+//  }
+
   Future<Map<String, int>> receivingParentsAndChildrenAmount() async {
     var listOfParentsAndChildren = await retrieveParentsIds();
     int amount;

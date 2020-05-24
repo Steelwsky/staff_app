@@ -124,25 +124,13 @@ class EmptyChildrenList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Divider(
-                  height: 2,
-                  thickness: 1,
-                  color: Colors.grey,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(
-                  'Детей нет',
-                  key: ValueKey('emptyChildrenList'),
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              'Детей нет',
+              key: ValueKey('emptyChildrenList'),
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ),
       ],

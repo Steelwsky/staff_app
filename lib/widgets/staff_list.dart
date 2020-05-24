@@ -35,10 +35,8 @@ class StaffListBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    final personController = Provider.of<PersonController>(context);
     return ListView.builder(
       scrollDirection: Axis.vertical,
-//      shrinkWrap: true,
       key: PageStorageKey('staffList'),
       itemCount: staffList.data.length,
       itemBuilder: (_, index) {
@@ -48,7 +46,7 @@ class StaffListBuilder extends StatelessWidget {
             key: ValueKey('item$index'),
             dense: false,
             title: Text(
-              '${staffMember.lastName} ${staffMember.firstName} ',
+              '${staffMember.lastName} ${staffMember.firstName} ${staffMember.middleName}',
               style: TextStyle(fontSize: 18),
             ),
             subtitle: Row(
@@ -64,7 +62,6 @@ class StaffListBuilder extends StatelessWidget {
                 ChildrenAmount(staffMember.id),
               ],
             ),
-            trailing: null,
             onTap: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (_) => SelectedStaffMemberPage(staffMemberModel: staffMember))),
           ),
@@ -74,8 +71,6 @@ class StaffListBuilder extends StatelessWidget {
   }
 }
 
-
-
 class EmptyStaffList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -83,7 +78,7 @@ class EmptyStaffList extends StatelessWidget {
       height: 40,
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
+        padding: const EdgeInsets.only(top: 16.0),
         child: Text(
           'Сотрудников нет',
           key: ValueKey('emptyStaffList'),
